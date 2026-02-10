@@ -78,12 +78,12 @@ const getMeetingById = async (id) => {
 const getAllMeetings = async (filters = {}) => {
   const whereClause = {};
 
-  // Optional: Filter by specific User
+  // Filter by specific User
   if (filters.userId) {
     whereClause.userId = filters.userId;
   }
 
-  // Optional: Filter by Date Range
+  // Filter by Date Range
   if (filters.startDate && filters.endDate) {
     whereClause.startTime = {
       [Op.between]: [filters.startDate, filters.endDate],

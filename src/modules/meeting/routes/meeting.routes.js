@@ -6,7 +6,7 @@ const meetingController = require('../interface/meeting.controller');
 router.post('/', meetingController.createMeeting);        // Create Meeting
 router.get('/', meetingController.getAllMeetings);        // List All Meetings
 
-router.get('/:id', meetingController.getMeeting);         // Get Single Meeting (NEW ROUTE)
+router.get('/:id', meetingController.getMeeting);         // Get Single Meeting
 
 router.put('/:id', meetingController.updateMeeting);      // Update Meeting
 router.delete('/:id', meetingController.deleteMeeting);   // Delete Meeting

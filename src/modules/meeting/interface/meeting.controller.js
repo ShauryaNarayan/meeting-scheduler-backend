@@ -15,7 +15,7 @@ const createMeeting = async (req, res) => {
 // UPDATED: Extracts filters from URL
 const getAllMeetings = async (req, res) => {
   try {
-    // Extract optional query params from URL
+    // Extract query params from URL
     const filters = {
       userId: req.query.userId,
       startDate: req.query.startDate,
