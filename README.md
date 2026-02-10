@@ -28,7 +28,7 @@ INSTALLATION AND SETUP
 
 Follow these steps to set up and run the project locally.
 
-Clone the repository git clone <YOUR_GITHUB_REPO_LINK_HERE> cd meeting-scheduler-backend
+Clone the repository git clone: "https://github.com/ShauryaNarayan/meeting-scheduler-backend.git" cd meeting-scheduler-backend
 
 Install Dependencies Run the following command to install the required Node.js packages: npm install
 
