@@ -1,7 +1,15 @@
 const meetingService = require('../service/meeting.service');
+const { validateCreateMeeting, validateUpdateMeeting } = require('../dto/meeting.dto');
 
 const createMeeting = async (req, res) => {
   try {
+    // 1. USE DTO VALIDATION HERE
+    const validationErrors = validateCreateMeeting(req.body);
+    if (validationErrors) {
+        return res.status(400).json({ message: "Validation Failed", errors: validationErrors });
+    }
+
+    // 2. Proceed if validation passes
     const meeting = await meetingService.createMeeting(req.body);
     res.status(201).json(meeting);
   } catch (error) {
@@ -12,16 +20,13 @@ const createMeeting = async (req, res) => {
   }
 };
 
-// UPDATED: Extracts filters from URL
 const getAllMeetings = async (req, res) => {
   try {
-    // Extract query params from URL
     const filters = {
       userId: req.query.userId,
       startDate: req.query.startDate,
       endDate: req.query.endDate,
     };
-
     const meetings = await meetingService.getAllMeetings(filters);
     res.status(200).json(meetings);
   } catch (error) {
@@ -41,6 +46,12 @@ const getMeeting = async (req, res) => {
 
 const updateMeeting = async (req, res) => {
   try {
+    // 1. USE DTO VALIDATION HERE
+    const validationErrors = validateUpdateMeeting(req.body);
+    if (validationErrors) {
+        return res.status(400).json({ message: "Validation Failed", errors: validationErrors });
+    }
+
     const meeting = await meetingService.updateMeeting(req.params.id, req.body);
     res.status(200).json(meeting);
   } catch (error) {
